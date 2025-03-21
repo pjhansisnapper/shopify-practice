@@ -1,4 +1,10 @@
 <section>
+    {% assign total_featured = collections['featured-products'].products | size %}
+  {% if total_featured > 10 %}
+    <p class="featured-message">We have an amazing selection of featured products!</p>
+  {% else %}
+    <p class="featured-message">Check out our exclusive featured products!</p>
+  {% endif %}
   <h2>Featured Products</h2>
   <div class="Product-list">
     {% for product in collections['featured-products'].products %}
@@ -19,7 +25,7 @@
     <a href="{{ pages['about-us'].url }}">About Us</a>
   </div>
 </section>
-</section>
+
 <style>
   .featured-products {
     text-align: center;
@@ -60,5 +66,12 @@
     font-size: 16px;
     font-weight: bold;
     color: #333;
+  }
+  .featured-message {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0073aa;
+    text-align: center;
+    margin-bottom: 15px;
   }
 </style>
