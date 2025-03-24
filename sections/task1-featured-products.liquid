@@ -1,4 +1,10 @@
 <section>
+  <!--String Variable for Welcome Message -->
+  {% assign welcome_message = "Welcome to Our Exclusive Collection!" %}
+  <h1 class="welcome-message">{{ welcome_message }}</h1>
+
+
+   <!--  Conditional Message for Featured Products Count -->
     {% assign total_featured = collections['featured-products'].products | size %}
   {% if total_featured > 10 %}
     <p class="featured-message">We have an amazing selection of featured products!</p>
@@ -14,6 +20,11 @@
 
           <h3>{{ product.title }}</h3>
         </a>
+     
+        <!--  Number Formatting: Displaying Price with Two Decimal Places -->
+       <p>Price: {{ product.price | money_with_currency }}</p>
+
+
         <p>Price: {{ product.price | money }}</p>
       </div>
     {% else %}
@@ -23,6 +34,16 @@
    <!-- ✅ Add About Us Link Here -->
    <div class="about-us-link">
     <a href="{{ pages['about-us'].url }}">About Us</a>
+  </div>
+    <!--  Array for Customer Testimonials -->
+  {% assign testimonials = "Best shopping experience!, Excellent customer service!, Quality products and fast shipping!" | split: ", " %}
+  <div class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <ul>
+      {% for testimonial in testimonials %}
+        <li class="testimonial-item">"{{ testimonial }}"</li>
+      {% endfor %}
+    </ul>
   </div>
 </section>
 
