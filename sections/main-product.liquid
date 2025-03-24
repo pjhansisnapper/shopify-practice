@@ -196,6 +196,11 @@
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
                     {{ product.description }}
                   </div>
+                  {%- else -%}
+                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                    <p>Description coming soon!</p>
+                  </div>
+   
                 {%- endif -%}
               {%- when 'sku' -%}
                 <p
