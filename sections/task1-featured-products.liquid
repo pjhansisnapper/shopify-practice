@@ -1,11 +1,11 @@
 <section>
-  <!--String Variable for Welcome Message -->
+  <!-- String Variable for Welcome Message -->
   {% assign welcome_message = "Welcome to Our Exclusive Collection!" %}
   <h1 class="welcome-message">{{ welcome_message }}</h1>
 
 
-   <!--  Conditional Message for Featured Products Count -->
-    {% assign total_featured = collections['featured-products'].products | size %}
+  <!-- Conditional Message for Featured Products Count -->
+  {% assign total_featured = collections['featured-products'].products | size %}
   {% if total_featured > 10 %}
     <p class="featured-message">We have an amazing selection of featured products!</p>
   {% else %}
@@ -13,16 +13,20 @@
   {% endif %}
   <h2>Featured Products</h2>
   <div class="Product-list">
-    {% for product in collections['featured-products'].products %}
+    {% for product in collections['featured-products'].products limit: 3 %}
       <div class="product-item">
         <a href="{{ product.url }}">
-            <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title }}" width="500" height="600">
+          <img
+            src="{{ product.featured_image | image_url: width: 500 }}"
+            alt="{{ product.title }}"
+            width="500"
+            height="600">
 
           <h3>{{ product.title }}</h3>
         </a>
-     
-        <!--  Number Formatting: Displaying Price with Two Decimal Places -->
-       <p>Price: {{ product.price | money_with_currency }}</p>
+
+        <!-- Number Formatting: Displaying Price with Two Decimal Places -->
+        <p>Price: {{ product.price | money_with_currency }}</p>
 
 
         <p>Price: {{ product.price | money }}</p>
@@ -31,11 +35,11 @@
       <li>No featured products available.</li>
     {% endfor %}
   </div>
-   <!-- ✅ Add About Us Link Here -->
-   <div class="about-us-link">
+  <!-- ✅ Add About Us Link Here -->
+  <div class="about-us-link">
     <a href="{{ pages['about-us'].url }}">About Us</a>
-  </div>
-    <!--  Array for Customer Testimonials -->
+</div>
+  <!-- Array for Customer Testimonials -->
   {% assign testimonials = "Best shopping experience!, Excellent customer service!, Quality products and fast shipping!" | split: ", " %}
   <div class="testimonials">
     <h2>What Our Customers Say</h2>
@@ -57,13 +61,15 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px; /* Adds space between products */
+    gap: 20px;
+    /* Adds space between products */
     list-style: none;
     padding: 0;
   }
 
   .product-item {
-    width: 300px; /* Adjust width for better spacing */
+    width: 300px;
+    /* Adjust width for better spacing */
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;

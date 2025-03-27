@@ -104,11 +104,17 @@
                       {{ product.title | capitalize }}
                     </h2>
                   </a>
-
+                   
+                 <!-- Add Product Tags Here -->
+                {% if product.tags.size > 0 %}
+                  <p>Tags: {{ product.tags | join: ", " }}</p>
+                {% else %}
+                  <p>No tags available.</p>
+                {% endif %}
                    <!-- Custom Message -->
                   <p>Special Offer: {{ product.title | upcase | truncate: 20 }}</p>
                   </div>
-                </div>
+                
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
